@@ -1,0 +1,36 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.*
+
+# Build
+/dist/
+/build/
+
+# VSCode
+.vscode/
+
+# Служебные файлы
+*.swp
+*.swo
+.idea/
+*.iml
+
+# Кэш браузера
+.cache/
+
+package-lock.json

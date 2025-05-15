@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap');
+body {
+  margin: 0;
+  font-family: 'Roboto', Arial, sans-serif;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+.gallery-container {
+  max-width: 700px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  padding: 24px 16px 32px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main-photo-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 320px;
+  margin-bottom: 24px;
+}
+.main-photo-hover {
+  position: relative;
+  display: inline-block;
+}
+.main-photo {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  max-height: 340px;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(33,150,243,0.13);
+  transition: box-shadow 0.2s;
+}
+.zoom-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  font-size: 56px;
+  color: #2196f3;
+  background: rgba(255,255,255,0.85);
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(33,150,243,0.18);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  z-index: 2;
+}
+.main-photo-hover:hover .zoom-icon {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1.1);
+  cursor: pointer;
+}
+/* Стили для модального окна */
+.fullscreen-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s;
+}
+.fullscreen-modal img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(33,150,243,0.25);
+}
+.close-icon {
+  position: absolute;
+  top: 32px;
+  right: 48px;
+  font-size: 48px;
+  color: #fff;
+  background: rgba(33,150,243,0.85);
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+  z-index: 1100;
+  transition: background 0.2s;
+}
+.close-icon:hover {
+  background: #f44336;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.thumbnails {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.thumbnail {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(33,150,243,0.10);
+  cursor: pointer;
+  border: 2px solid transparent;
+  background: #fafafa;
+  transition: border 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.thumbnail.selected {
+  border: 2px solid #2196f3;
+  box-shadow: 0 2px 8px rgba(33,150,243,0.18);
+}
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.2s;
+}
+.thumbnail:hover img {
+  transform: scale(1.07);
+}
+.slider-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  font-size: 36px !important;
+  color: #888;
+  background: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s, color 0.2s;
+  margin: 0 8px;
+}
+.slider-arrow:hover {
+  background: #1976d2;
+  color: #fff;
+}
+.thumbnails {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+.thumbnail {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.thumbnail.selected {
+  border: 2px solid #1976d2;
+}
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.left-arrow {
+  order: -1;
+}
+.right-arrow {
+  order: 2;
+}
+@media (max-width: 600px) {
+  .gallery-container {
+    padding: 8px 2px 16px 2px;
+  }
+  .main-photo-wrapper {
+    min-height: 180px;
+  }
+  .main-photo {
+    max-height: 220px;
+  }
+  .thumbnail {
+    width: 44px;
+    height: 44px;
+  }
+}
